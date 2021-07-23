@@ -682,8 +682,7 @@ Campaign="*res://source/global/Campaign.gd"
 window/size/width=1920
 window/size/height=1080
 window/dpi/allow_hidpi=true
-window/stretch/mode="2d"
-window/stretch/aspect="expand"
+window/stretch/aspect="disabled"
 
 [importer_defaults]
 
