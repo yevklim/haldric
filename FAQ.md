@@ -33,7 +33,7 @@ Yes.
 
 Given the new technology, we have to recreate all content from scratch, including campaigns.
 
-This is a *lot* or work, and we will not be able to ship Haldric with all the existing mainline campaigns.
+This is a *lot* of work, and we will not be able to ship Haldric with all the existing mainline campaigns.
 
 For the initial release, we plan to include *one* mainline campaign. More campaigns will be (re)added in later versions.
 
