@@ -6,6 +6,8 @@ signal zoom_changed
 var initial_camera_position := Vector2()
 var initial_mouse_position := Vector2()
 
+var movement_trigger_inset : int = 10
+
 export var speed := 4000
 export var zoom_step := 0.5
 export var zoom_max_in := 0.5
@@ -22,24 +24,34 @@ func _input(event: InputEvent) -> void:
 
 
 func _process(delta: float) -> void:
-	_handle_keyboard_scroll(delta)
+	_manual_camera_movement(delta)
 
 
-func _handle_keyboard_scroll(delta: float) -> void:
+func _manual_camera_movement(delta: float) -> void:
 	var speed_adjusted: float = speed * zoom.x / 2
 
 	var new_position: Vector2 = position
+	
+	var viewport_size: Vector2 = get_viewport_rect().size
 
-	if Input.is_action_pressed("ui_up"):
+	var mouse_position: Vector2 = get_viewport().get_mouse_position()
+	var mouse_position_inv := Vector2(viewport_size.x - mouse_position.x,
+									  viewport_size.y - mouse_position.y)
+
+	if Input.is_action_pressed("ui_up") || (
+		mouse_position.y <= movement_trigger_inset):
 		new_position.y -= speed_adjusted * delta / 2
 
-	if Input.is_action_pressed("ui_down"):
+	if Input.is_action_pressed("ui_down") || (
+		mouse_position_inv.y <= movement_trigger_inset):
 		new_position.y += speed_adjusted * delta / 2
 
-	if Input.is_action_pressed("ui_left"):
+	if Input.is_action_pressed("ui_left") || (
+		mouse_position.x <= movement_trigger_inset):
 		new_position.x -= speed_adjusted * delta / 2
 
-	if Input.is_action_pressed("ui_right"):
+	if Input.is_action_pressed("ui_right") || (
+		mouse_position_inv.x <= movement_trigger_inset):
 		new_position.x += speed_adjusted * delta / 2
 
 	if(new_position != position):
