@@ -157,8 +157,12 @@ func show_message(unit: Unit, messages: Array) -> void:
 
 	var speech := Speech.instance()
 	speech.speaker = unit.alias
-	speech.portrait = unit.type.sprite.texture
-
+	if unit.portrait != null:
+		speech.portrait = unit.portrait
+	elif unit.type.portrait != null:
+		speech.portrait = unit.type.portrait
+	else:
+		speech.portrait = unit.type.sprite.texture
 	speech.lines = messages
 
 	dialogue.add_child(speech)
