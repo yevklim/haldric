@@ -36,6 +36,8 @@ var brightness = 1.0 setget _set_brightness
 
 export var mat: Material = null
 
+export var portrait : Texture = null
+
 onready var tween := $Tween as Tween
 onready var ui_hook := $UIHook as RemoteTransform2D
 

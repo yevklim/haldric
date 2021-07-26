@@ -36,6 +36,8 @@ onready var advancements := $Advancements
 onready var anim := $AnimationPlayer
 onready var sprite := $Sprite
 
+export var portrait : Texture = null
+
 
 func _ready() -> void:
 	for id in advances_to:
