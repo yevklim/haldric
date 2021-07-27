@@ -27,6 +27,7 @@ func _ready() -> void:
 	name_label.text = speaker
 	portrait_rect.texture = portrait
 	portrait_rect.flip_h = flip_portrait
+	portrait_rect.rect_size = portrait.get_size()
 	text_box.speaker = speaker
 
 
