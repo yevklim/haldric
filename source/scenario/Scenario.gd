@@ -251,7 +251,7 @@ func start_combat(attacker_loc: Location, attacker_attack: Attack, defender_loc:
 	if not map.are_locations_neighbors(attacker_loc, defender_loc):
 		var result := map.find_path_with_max_costs(attacker_loc, defender_loc, attacker_loc.unit.moves.value)
 
-		if result.size() < 2:
+		if result.path.size() < 2:
 			emit_signal("combat_finished")
 			return
 
