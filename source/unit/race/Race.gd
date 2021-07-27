@@ -3,6 +3,8 @@ class_name Race
 
 export var id := ""
 
+enum Gender {MALE, FEMALE}
+
 export var male_singular := ""
 export var female_singular := ""
 export var singular := ""
@@ -19,9 +21,16 @@ export var trait_count := 2
 export(Array, PackedScene) var traits := []
 
 
-func get_random_name() -> String:
+func get_random_name(gender : int = Gender.MALE) -> String:
 	randomize()
-	var list = male_names.split(",")
+	var list
+	match gender:
+		Gender.MALE:
+			list = male_names.split(",")
+		Gender.FEMALE:
+			list = female_names.split(",")
+		_:
+			list = [""]
 	var name : String = list[randi() % list.size()]
 	return name.strip_edges()
 
