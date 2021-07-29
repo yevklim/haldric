@@ -151,7 +151,7 @@ margin_bottom = 96.0
 rect_min_size = Vector2( 0, 40 )
 focus_mode = 0
 disabled = true
-enabled_focus_mode = 0
+focus_mode  = 0
 text = "New Map"
 
 [node name="HSeparator" type="HSeparator" parent="HUD/PanelContainer/VBoxContainer"]
@@ -202,7 +202,6 @@ margin_right = 286.0
 margin_bottom = 358.0
 rect_min_size = Vector2( 0, 40 )
 focus_mode = 0
-enabled_focus_mode = 0
 text = "Quit"
 
 [node name="TerrainSelector" type="NinePatchRect" parent="HUD"]

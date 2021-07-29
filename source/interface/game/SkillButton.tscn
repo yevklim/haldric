@@ -8,7 +8,6 @@ margin_right = 80.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 80, 20 )
 focus_mode = 0
-enabled_focus_mode = 0
 text = "Skill"
 script = ExtResource( 1 )
 __meta__ = {
