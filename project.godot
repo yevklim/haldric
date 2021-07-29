@@ -684,6 +684,11 @@ window/size/height=1080
 window/dpi/allow_hidpi=true
 window/stretch/aspect="disabled"
 
+[global]
+
+versionMajor=2
+versionMinor=0
+
 [importer_defaults]
 
 texture={
