@@ -25,7 +25,8 @@ func _execute() -> void:
 	unit.type = type
 	unit.is_leader = _is_leader
 	unit.side_number = _side.number
-	unit.side_color = _side.color
+	unit.set_side_colors(_side.color, _side.max_color, 
+			_side.min_color, _side.rep_color)
 	unit.team_name = _side.team_name
 
 	_parent.add_child(unit)

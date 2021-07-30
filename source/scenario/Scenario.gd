@@ -118,6 +118,8 @@ func recruit(unit_type_id: String, loc: Location = null) -> void:
 	var unit = Unit.instance()
 	unit.side_number = current_side.number
 	unit.side_color = current_side.color
+	unit.set_side_colors(current_side.color, current_side.max_color, 
+			current_side.min_color, current_side.rep_color)
 	unit.team_name = current_side.team_name
 	unit.type = unit_type
 

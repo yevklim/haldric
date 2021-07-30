@@ -293,6 +293,17 @@ func set_type(unit_type: UnitType, advancing := true) -> void:
 	reset()
 
 
+func set_side_colors(mid_color: Color, max_color: Color, 
+		min_color: Color, rep_color: Color) -> void:
+	side_color = mid_color
+	if !type or !type.sprite:
+		yield(self, "ready")
+	type.sprite.material.set_shader_param("mid_color", mid_color)
+	type.sprite.material.set_shader_param("max_color", max_color)
+	type.sprite.material.set_shader_param("min_color", min_color)
+	type.sprite.material.set_shader_param("rep_color", rep_color)
+
+
 func _load_race() -> void:
 	if not Data.races.has(type.race):
 		Console.warn("Race %s does not exist!" % type.race)

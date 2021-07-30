@@ -4,15 +4,68 @@
 code = "shader_type canvas_item;
 
 uniform float brightness : hint_range(0.0, 5.0) = 1.0;
+uniform vec4 mid_color = vec4(1.0, 0.0, 0.0, 1.0);
+uniform vec4 max_color = vec4(1.0, 1.0, 1.0, 1.0);
+uniform vec4 min_color = vec4(0.0, 0.0, 0.0, 1.0);
+uniform vec4 rep_color = vec4(1.0, 0.0, 0.0, 1.0);
+
+const vec4 reference_color = vec4(236, 0, 140, 1); // the middle color of magenta palette
+const float reference_avg = (236.0 + 0.0 + 140.0) / 255.0 / 3.0; //0.492
+
+bool is_magenta(vec4 color)
+{
+	if (color.a == 0.0) return false;
+	vec3 cl255 = vec3(
+		floor(color.r * 255.0),
+		floor(color.g * 255.0),
+		floor(color.b * 255.0));
+	return cl255.rgb == vec3(63, 0, 22) ||
+		cl255.rgb == vec3(85, 0, 42) ||
+		cl255.rgb == vec3(105, 0, 57) ||
+		cl255.rgb == vec3(123, 0, 69) ||
+		cl255.rgb == vec3(140, 0, 81) ||
+		cl255.rgb == vec3(158, 0, 93) ||
+		cl255.rgb == vec3(177, 0, 105) ||
+		cl255.rgb == vec3(195, 0, 116) ||
+		cl255.rgb == vec3(214, 0, 127) ||
+		cl255.rgb == vec3(236, 0, 140) ||
+		cl255.rgb == vec3(238, 61, 150) ||
+		cl255.rgb == vec3(239, 91, 161) ||
+		cl255.rgb == vec3(241, 114, 172) ||
+		cl255.rgb == vec3(242, 135, 182) ||
+		cl255.rgb == vec3(244, 154, 193) ||
+		cl255.rgb == vec3(246, 173, 205) ||
+		cl255.rgb == vec3(248, 193, 217) ||
+		cl255.rgb == vec3(250, 213, 229) ||
+		cl255.rgb == vec3(253, 233, 241);
+}
 
 void fragment()
 {
 	vec4 color = texture(TEXTURE, UV);
+	if (is_magenta(color))
+	{
+		float old_avg = (color.r + color.g + color.b) / 3.0;
+		float old_ratio;
+		if (old_avg <= reference_avg)
+		{
+			old_ratio = old_avg / reference_avg;
+			color.rgb = (old_ratio * mid_color + (1.0 - old_ratio) * min_color).rgb;
+		}
+		else// if (reference_avg != 1.0)
+		{
+			old_ratio = (1.0 - old_avg) / (1.0 - reference_avg);
+			color.rgb = (old_ratio * mid_color + (1.0 - old_ratio) * max_color).rgb;
+		}
+	}
 	color.rgb = color.rgb * brightness;
 	COLOR = color;
-	
 }"
 
 [resource]
 shader = SubResource( 1 )
 shader_param/brightness = 1.0
+shader_param/mid_color = Plane( 1, 0, 0, 1 )
+shader_param/max_color = Plane( 1, 1, 1, 1 )
+shader_param/min_color = Plane( 0, 0, 0, 1 )
+shader_param/rep_color = Plane( 1, 0, 0, 1 )

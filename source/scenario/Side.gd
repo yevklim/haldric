@@ -28,7 +28,14 @@ export var start_position := Vector2()
 export var gold := 100
 export var base_income := 2
 
-export var color := Color.pink
+# the average shade of a unit's team-color portions
+export var color: Color = "#ff0000"
+# the maximum highlight shade of a unit's team-color portions
+export var max_color: Color = "#ffffff"
+# the minimum shadow shade of a unit's team-color portions
+export var min_color: Color = "#000000"
+# the color of the markers on the mini-map
+export var rep_color: Color = "#ff0000"
 
 export var ai := "SimpleAI"
 
