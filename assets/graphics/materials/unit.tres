@@ -9,8 +9,8 @@ uniform vec4 max_color = vec4(1.0, 1.0, 1.0, 1.0);
 uniform vec4 min_color = vec4(0.0, 0.0, 0.0, 1.0);
 uniform vec4 rep_color = vec4(1.0, 0.0, 0.0, 1.0);
 
-const vec4 reference_color = vec4(236, 0, 140, 1); // the middle color of magenta palette
-const float reference_avg = (236.0 + 0.0 + 140.0) / 255.0 / 3.0; //0.492
+const vec4 reference_color = vec4(244, 154, 193, 1); // 15th magenta color
+const float reference_avg = (244.0 + 154.0 + 193.0) / 255.0 / 3.0; //0.773
 
 bool is_magenta(vec4 color)
 {
