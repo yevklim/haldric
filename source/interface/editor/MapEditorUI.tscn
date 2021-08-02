@@ -1,11 +1,10 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://source/interface/editor/EditorUI.gd" type="Script" id=1]
+[ext_resource path="res://source/interface/editor/MapEditorUI.gd" type="Script" id=1]
 [ext_resource path="res://assets/graphics/images/interface/white.png" type="Texture" id=2]
 [ext_resource path="res://source/interface/misc/Selector.tscn" type="PackedScene" id=3]
 
-
-[node name="EditorUI" type="CanvasLayer"]
+[node name="MapEditorUI" type="CanvasLayer"]
 follow_viewport_enable = true
 script = ExtResource( 1 )
 
@@ -151,7 +150,6 @@ margin_bottom = 96.0
 rect_min_size = Vector2( 0, 40 )
 focus_mode = 0
 disabled = true
-focus_mode  = 0
 text = "New Map"
 
 [node name="HSeparator" type="HSeparator" parent="HUD/PanelContainer/VBoxContainer"]
@@ -216,6 +214,7 @@ patch_margin_bottom = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="value_changed" from="HUD/PanelContainer/VBoxContainer/PlayerSlider" to="." method="_on_PlayerSlider_value_changed"]
 [connection signal="value_changed" from="HUD/PanelContainer/VBoxContainer/BrushSizeSlider" to="." method="_on_BrushSizeSlider_value_changed"]
 [connection signal="text_changed" from="HUD/PanelContainer/VBoxContainer/NewMap/Width/LineEdit" to="." method="_on_MapWidthInput_text_changed"]

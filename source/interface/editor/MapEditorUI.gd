@@ -1,5 +1,5 @@
 extends CanvasLayer
-class_name EditorUI
+class_name MapEditorUI
 
 signal mode_changed(mode)
 
@@ -59,7 +59,7 @@ func _add_mode_button(text: String, callback: String) -> void:
 
 
 func _add_terrain_button(terrain: TerrainData) -> void:
-	var button := EditorTerrainButton.instance()
+	var button := MapEditorTerrainButton.instance()
 	terrain_buttons.add_child(button)
 	button.texture = terrain.graphic.texture
 	button.connect("pressed", self, "_on_terrain_button_selected", [ button, terrain.code ])

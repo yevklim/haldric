@@ -86,7 +86,7 @@ func _on_location_hovered(loc: Location) -> void:
 	get_tree().call_group("Selector", "update_info", hovered_location)
 
 
-func _on_EditorUI_terrain_selected(code: String) -> void:
+func _on_MapEditorUI_terrain_selected(code: String) -> void:
 	if code.begins_with("^"):
 		active_terrain = ""
 		active_overlay = code
@@ -95,7 +95,7 @@ func _on_EditorUI_terrain_selected(code: String) -> void:
 		active_overlay = ""
 
 
-func _on_EditorUI_save_pressed(file_name: String) -> void:
+func _on_MapEditorUI_save_pressed(file_name: String) -> void:
 	if not file_name:
 		Console.write("Please provide a filename!")
 
@@ -104,17 +104,17 @@ func _on_EditorUI_save_pressed(file_name: String) -> void:
 	ResourceSaver.save("res://data/maps/" + file_name + ".tres", data)
 
 
-func _on_EditorUI_mode_changed(mode: int) -> void:
+func _on_MapEditorUI_mode_changed(mode: int) -> void:
 	paint_mode = mode
 
 
-func _on_EditorUI_player_selected(player: int) -> void:
+func _on_MapEditorUI_player_selected(player: int) -> void:
 	active_player = player
 
 
-func _on_EditorUI_brush_size_selected(size: int) -> void:
+func _on_MapEditorUI_brush_size_selected(size: int) -> void:
 	active_brush_size = size - 1
 
 
-func _on_EditorUI_new_map_pressed(width: int, height: int) -> void:
+func _on_MapEditorUI_new_map_pressed(width: int, height: int) -> void:
 	new_map(width, height)
