@@ -22,11 +22,13 @@ var players := {}
 
 func _ready() -> void:
 	new_map(40, 40)
+	active_terrain = Data.terrains.keys()[0]
 
 
 func _unhandled_input(event: InputEvent) -> void:
 	if Input.is_mouse_button_pressed(BUTTON_LEFT):
-		if hovered_location != last_location:
+#		why do we need next condition btw?
+#		if hovered_location != last_location:
 			if paint_mode == PaintMode.TERRAIN:
 				edit_locations(map.get_locations_in_range(hovered_location.cell, active_brush_size))
 			elif paint_mode == PaintMode.PLAYER:
@@ -86,6 +88,7 @@ func _on_location_hovered(loc: Location) -> void:
 
 func _on_EditorUI_terrain_selected(code: String) -> void:
 	if code.begins_with("^"):
+		active_terrain = ""
 		active_overlay = code
 	else:
 		active_terrain = code
@@ -94,7 +97,7 @@ func _on_EditorUI_terrain_selected(code: String) -> void:
 
 func _on_EditorUI_save_pressed(file_name: String) -> void:
 	if not file_name:
-		Console.write("Please provie a filename!")
+		Console.write("Please provide a filename!")
 
 	var data = map.get_map_data()
 	data.players = players
