@@ -76,7 +76,7 @@ func edit_location(loc: Location) -> void:
 
 func set_player(loc: Location):
 	players[active_player] = loc.cell
-	Console.write("Player 1: %s" % str(loc.cell))
+	Console.write("Player %d: %s" % [active_player + 1, str(loc.cell)])
 
 
 func _on_location_hovered(loc: Location) -> void:
