@@ -6,7 +6,7 @@ func _on_Play_pressed() -> void:
 
 
 func _on_Editor_pressed() -> void:
-	Scene.change("MapEditor")
+	Scene.change("Editor")
 
 
 func _on_Quit_pressed() -> void:

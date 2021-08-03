@@ -4,7 +4,12 @@ extends Node
 var scenes := {
 	"TitleScreen": "res://source/menu/TitleScreen.tscn",
 	"Game": "res://source/game/Game.tscn",
-	"MapEditor": "res://source/editor/MapEditor.tscn",
+	"Editor": "res://source/menu/EditorScreen.tscn",
+	"Editor/MapEditor": "res://source/editor/MapEditor.tscn",
+	"Editor/UnitEditor": "",
+	"Editor/ScenarioEditor": "",
+	"Editor/CampaignEditor": "",
+	"Editor/Misc": "",
 	"ScenarioSelectionMenu": "res://source/menu/ScenarioSelectionMenu.tscn",
 	"FactionSelectionMenu": "res://source/menu/FactionSelectionMenu.tscn",
 }
