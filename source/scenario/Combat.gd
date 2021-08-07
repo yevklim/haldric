@@ -89,7 +89,7 @@ func _strike(current: CombatContext, other: CombatContext, attacker: CombatConte
 		if current == attacker:
 			emit_signal("attacker_missed", attacker, defender)
 		else:
-			emit_signal("defender_defender", attacker, defender)
+			emit_signal("defender_missed", attacker, defender)
 
 	current.reset()
 
