@@ -200,6 +200,9 @@ func deselect() -> void:
 	__ = tween.start()
 
 
+func look_toward_cell(to: Vector2) -> void:
+	self.direction = Hex.get_direction_quad(Hex.world_to_map(global_position), to)
+
 func get_upkeep() -> int:
 
 	if upkeep in [ UpkeepType.FREE, UpkeepType.LOYAL]:

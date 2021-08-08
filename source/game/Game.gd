@@ -118,7 +118,10 @@ func _set_hovered_location(loc: Location) -> void:
 		return
 
 	if selected_unit and selected_unit.unit.team_name == scenario.current_side.team_name:
-		UI.show_hover_path(scenario.map.find_path(selected_unit, loc).path)
+		var _path = scenario.map.find_path(selected_unit, loc).path
+		UI.show_hover_path(_path)
+		if selected_unit.unit.can_attack() and _path.size():
+			selected_unit.unit.look_toward_cell(_path[0].cell)
 	else:
 		get_tree().call_group("UnitUI", "update_info", loc)
 

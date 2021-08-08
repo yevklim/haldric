@@ -29,6 +29,9 @@ func start(attacker: CombatContext, defender: CombatContext) -> void:
 	opponent[attacker] = defender
 	opponent[defender] = attacker
 
+	attacker.unit.look_toward_cell(defender.location.cell)
+	defender.unit.look_toward_cell(attacker.location.cell)
+
 	var queue := _make_attack_queue(attacker, defender)
 
 	while queue:
