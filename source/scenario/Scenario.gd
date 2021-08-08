@@ -358,7 +358,9 @@ func _load_map() -> void:
 
 
 func _load_sides() -> void:
-	for side in get_sides():
+	for i in range(sides.get_child_count()):
+		var side = sides.get_child(i) as Side
+		side.start_position = map_data.players[i]
 		if (Campaign.selected_scenario.type == ScenarioData.ScenarioType.SCENARIO):
 			side.set_faction(Campaign.selected_sides[side.number - 1])
 		create_unit(side.number, side.leader, side.start_position.x, side.start_position.y, true)
