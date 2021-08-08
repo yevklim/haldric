@@ -34,6 +34,8 @@ var is_leader := false setget _set_is_leader
 
 var brightness = 1.0 setget _set_brightness
 
+var direction: int = Hex.Direction.S setget _set_direction
+
 export var mat: Material = null
 
 export var portrait : Texture = null
@@ -349,3 +351,11 @@ func _set_is_leader(value: bool) -> void:
 func _set_brightness(value: float) -> void:
 	brightness = value
 	type.sprite.material.set_shader_param("brightness", value)
+
+
+func _set_direction(value: int) -> void:
+	if value < 0 or value > 5:
+		return
+	direction = value
+
+	type.sprite.flip_h = value > 3
