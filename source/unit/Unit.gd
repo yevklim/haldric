@@ -41,18 +41,14 @@ export var portrait : Texture = null
 onready var tween := $Tween as Tween
 onready var ui_hook := $UIHook as RemoteTransform2D
 
-onready var traits := Node.new()
-onready var effects := Node.new()
+onready var traits := $Traits as Node
+onready var effects := $Effects as Node
 
 static func instance() -> Unit:
 	return load("res://source/unit/Unit.tscn").instance() as Unit
 
 
 func _ready() -> void:
-	traits.name = "Traits"
-	add_child(traits)
-	effects.name = "Effects"
-	add_child(effects)
 	set_type(type, false)
 
 

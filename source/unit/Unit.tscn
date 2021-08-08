@@ -11,3 +11,7 @@ mat = ExtResource( 1 )
 
 [node name="UIHook" type="RemoteTransform2D" parent="."]
 position = Vector2( 0, -40 )
+
+[node name="Traits" type="Node" parent="."]
+
+[node name="Effects" type="Node" parent="."]
