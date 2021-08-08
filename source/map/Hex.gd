@@ -174,3 +174,11 @@ static func _get_cube_neighbor(cube: Vector3, direction: int, scale := 1) -> Vec
 
 static func _get_cube_distance(a: Vector3, b: Vector3):
 	return max(abs(a.x - b.x), max(abs(a.y - b.y), abs(a.z - b.z)))
+
+
+static func get_direction_qube(a: Vector3, b: Vector3) -> int:
+	return NEIGHBOR_TABLE.find(b - a)
+
+
+static func get_direction_quad(a: Vector2, b: Vector2) -> int:
+	return get_direction_qube(quad2cube(a), quad2cube(b))
