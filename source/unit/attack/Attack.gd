@@ -16,6 +16,7 @@ export var damage := 0
 export var strikes := 0
 
 export var projectile : PackedScene = null
+export var projectile_travel_time := 0.2
 
 onready var specials := get_children()
 
@@ -26,6 +27,8 @@ func fire(source, target) -> void:
 
 		if not p:
 			return
+		
+		p.travel_time = projectile_travel_time
 
 		get_tree().current_scene.add_child(p)
 		p.fire(source, target)
