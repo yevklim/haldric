@@ -33,7 +33,7 @@ onready var attacks := $Attacks
 
 onready var advancements := $Advancements
 
-onready var anim := $AnimationPlayer
+onready var anim := $AnimationPlayer as UnitAnimationPlayer
 onready var sprite := $Sprite
 
 export var portrait : Texture = null
@@ -49,13 +49,15 @@ func _ready() -> void:
 		advancement.alias = id
 		effect.type = unit_type
 
+	anim.sprite_flip_h_setter = funcref(sprite, "set_flip_h")
+
 
 func _enter_tree() -> void:
 	if not Engine.editor_hint:
 		return
 
 	if not $AnimationPlayer:
-		anim = AnimationPlayer.new()
+		anim = UnitAnimationPlayer.new()
 		anim.name = "AnimationPlayer"
 		add_child(anim)
 		anim.owner = get_tree().edited_scene_root

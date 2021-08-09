@@ -360,5 +360,4 @@ func _set_direction(value: int) -> void:
 	if value < 0 or value > 5:
 		return
 	direction = value
-
-	type.sprite.flip_h = value > 3
+	type.anim.filters.direction = [value]

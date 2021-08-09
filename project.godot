@@ -519,6 +519,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://source/interface/game/advancement/UnitAdvancementInfo.gd"
 }, {
+"base": "Animation",
+"class": "UnitAnimation",
+"language": "GDScript",
+"path": "res://source/unit/animations/UnitAnimation.gd"
+}, {
+"base": "AnimationPlayer",
+"class": "UnitAnimationPlayer",
+"language": "GDScript",
+"path": "res://source/unit/animations/UnitAnimationPlayer.gd"
+}, {
 "base": "Node2D",
 "class": "UnitPlate",
 "language": "GDScript",
@@ -652,6 +662,8 @@ _global_script_class_icons={
 "TraitUpkeep": "",
 "Unit": "",
 "UnitAdvancementInfo": "",
+"UnitAnimation": "",
+"UnitAnimationPlayer": "",
 "UnitPlate": "",
 "UnitRecallInfo": "",
 "UnitRecruitInfo": "",
