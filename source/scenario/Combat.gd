@@ -160,7 +160,8 @@ func _strike(current: CombatContext, other: CombatContext, attacker: CombatConte
 
 
 func _tween_attack(attacker: Unit, defender: Unit) -> void:
-	var target_position = (attacker.global_position + defender.global_position) * 0.5
+	var attack_vector = defender.global_position - attacker.global_position
+	var target_position = attacker.global_position + attack_vector * 0.6
 	tween.interpolate_property(attacker.type.sprite, "global_position", attacker.type.global_position, target_position, combat_default_length, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
 	tween.start()
 
