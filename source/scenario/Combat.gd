@@ -11,7 +11,8 @@ signal defender_missed(attacker, defender)
 export var min_death_xp := 4
 export var death_xp := 8
 
-export var combat_speed := 0.3
+export var combat_speed := 1.0
+export var combat_default_length := 0.6
 
 onready var tween := Tween.new()
 
@@ -39,26 +40,75 @@ func start(attacker: CombatContext, defender: CombatContext) -> void:
 		var other = opponent[current]
 		var origin = current.unit.global_position
 
-		if current.category == "melee":
-			_tween_attack(current.unit, other.unit)
-			yield(tween, "tween_completed")
+		current.unit.type.anim.filters.apply_to = [UnitAnimation.Triggers.attack]
+		other.unit.type.anim.filters.apply_to = [UnitAnimation.Triggers.defend]
 
-			_strike(current, other, attacker, defender)
+		if current == attacker:
+			current.unit.type.anim.filters.attack = current._attack
+			other.unit.type.anim.filters.second_attack = other._attack
+
+		elif current == defender:
+			current.unit.type.anim.filters.second_attack = current._attack
+			other.unit.type.anim.filters.attack = other._attack
+
+		var strike = _strike(current, other, attacker, defender)
+
+		var current_anim = current.unit.type.anim.get_unit_animation()
+		var other_anim = other.unit.type.anim.get_unit_animation()
+
+		current.unit.type.anim.play_unit_animation(current_anim)
+
+		var zero_point: float = current_anim.get_key_point("zero_point")
+		var missile_start: float = current_anim.get_key_point("missile_start")
+
+		if zero_point == 0:
+			zero_point = combat_default_length
+
+		if current.category == "melee":
+			other.unit.type.anim.play_unit_animation(other_anim)
+
+			_tween_attack(current.unit, other.unit)
+
+			yield(get_tree().create_timer(zero_point), "timeout")
+
+			strike.resume()
+
+			if tween.is_active():
+				yield(tween, "tween_completed")
 
 			_tween_retreat(current.unit, origin)
 			yield(tween, "tween_completed")
 
 		else:
+			if missile_start > 0:
+				current._attack.projectile_travel_time = missile_start
+			else:
+				missile_start = current._attack.projectile_travel_time
+
+			yield(get_tree().create_timer(zero_point - missile_start), "timeout")
+
+			other.unit.type.anim.play_unit_animation(other_anim)
+
 			current.fire(other.location)
 
-			yield(get_tree().create_timer(combat_speed), "timeout")
+			yield(get_tree().create_timer(missile_start), "timeout")
 
-			_strike(current, other, attacker, defender)
+			strike.resume()
 
-			yield(get_tree().create_timer(combat_speed), "timeout")
+			yield(get_tree().create_timer(max(missile_start, combat_default_length)), "timeout")
+		
+		current.unit.type.anim.filters.apply_to.clear()
+		other.unit.type.anim.filters.apply_to.clear()
+
+		current.unit.type.anim.filters.attack = null
+		other.unit.type.anim.filters.attack = null
+
+		current.unit.type.anim.filters.second_attack = null
+		other.unit.type.anim.filters.second_attack = null
 
 		if other.unit.is_dead():
 			current.unit.grant_experience(max(min_death_xp, death_xp * other.unit.type.level))
+			current.unit.type.anim.play_unit_animation()
 			other.unit.kill()
 			emit_signal("finished")
 			queue_free()
@@ -66,6 +116,9 @@ func start(attacker: CombatContext, defender: CombatContext) -> void:
 
 	attacker.unit.grant_experience(defender.unit.type.level)
 	defender.unit.grant_experience(attacker.unit.type.level)
+
+	attacker.unit.type.anim.play_unit_animation()
+	defender.unit.type.anim.play_unit_animation()
 
 	emit_signal("finished")
 	queue_free()
@@ -82,12 +135,21 @@ func _strike(current: CombatContext, other: CombatContext, attacker: CombatConte
 	print(current.to_string())
 
 	if randf() < accuracy:
+		var other_will_survive = other.unit.health.value - other.unit.calculate_damage(current.damage, current.damage_type) > 0
+		current.unit.type.anim.filters.hits = UnitAnimation.Hits.hit if other_will_survive else UnitAnimation.Hits.kill
+
+		yield()
+
 		other.unit.hurt(current.damage, current.damage_type)
 		if current == attacker:
 			emit_signal("attacker_hit", attacker, defender)
 		else:
 			emit_signal("defender_hit", attacker, defender)
 	else:
+		current.unit.type.anim.filters.hits = UnitAnimation.Hits.miss
+
+		yield()
+
 		get_tree().call_group("GameUI", "spawn_popup_label", other.unit.global_position + Vector2(0, -48), "Miss!", 16, Color.gray, 100, 0.2)
 		if current == attacker:
 			emit_signal("attacker_missed", attacker, defender)
@@ -99,12 +161,12 @@ func _strike(current: CombatContext, other: CombatContext, attacker: CombatConte
 
 func _tween_attack(attacker: Unit, defender: Unit) -> void:
 	var target_position = (attacker.global_position + defender.global_position) * 0.5
-	tween.interpolate_property(attacker.type.sprite, "global_position", attacker.type.global_position, target_position, combat_speed, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
+	tween.interpolate_property(attacker.type.sprite, "global_position", attacker.type.global_position, target_position, combat_default_length, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
 	tween.start()
 
 
 func _tween_retreat(unit: Unit, origin: Vector2) -> void:
-	tween.interpolate_property(unit.type.sprite, "global_position", unit.type.sprite.global_position, unit.global_position, combat_speed, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
+	tween.interpolate_property(unit.type.sprite, "global_position", unit.type.sprite.global_position, unit.global_position, combat_default_length, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
 	tween.start()
 
 

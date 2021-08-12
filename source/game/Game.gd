@@ -122,6 +122,7 @@ func _set_hovered_location(loc: Location) -> void:
 		UI.show_hover_path(_path)
 		if selected_unit.unit.can_attack() and _path.size():
 			selected_unit.unit.look_toward_cell(_path[0].cell)
+			selected_unit.unit.type.anim.play_unit_animation()
 	else:
 		get_tree().call_group("UnitUI", "update_info", loc)
 
