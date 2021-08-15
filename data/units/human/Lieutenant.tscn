@@ -1,7 +1,7 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://source/unit/unit_type/UnitType.gd" type="Script" id=1]
-[ext_resource path="res://assets/graphics/images/units/human/lieutenant.png" type="Texture" id=2]
+[ext_resource path="res://assets/audio/sounds/ambient/morning.ogg" type="AudioStream" id=2]
 [ext_resource path="res://source/unit/unit_type/DefenseType.gd" type="Script" id=3]
 [ext_resource path="res://source/unit/unit_type/MovementType.gd" type="Script" id=4]
 [ext_resource path="res://source/unit/unit_type/ResistanceType.gd" type="Script" id=5]
@@ -10,7 +10,9 @@
 [ext_resource path="res://assets/graphics/images/attacks/sword-human.png" type="Texture" id=8]
 [ext_resource path="res://assets/graphics/images/attacks/bow.png" type="Texture" id=9]
 [ext_resource path="res://data/projectiles/Arrow.tscn" type="PackedScene" id=10]
-
+[ext_resource path="res://data/Lieutenant-sword-attack.tres" type="Animation" id=11]
+[ext_resource path="res://assets/graphics/images/units/human/lieutenant/lieutenant.png" type="Texture" id=12]
+[ext_resource path="res://source/unit/animations/UnitAnimationPlayer.gd" type="Script" id=13]
 
 [node name="Lieutenant" type="Node2D"]
 script = ExtResource( 1 )
@@ -25,19 +27,21 @@ experience = 80
 advances_to = [ "General" ]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 0.1
+anims/Lieutenant-sword-attack = ExtResource( 11 )
+script = ExtResource( 13 )
 
 [node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 2 )
+texture = ExtResource( 12 )
 
 [node name="Defense" type="Node" parent="."]
 script = ExtResource( 3 )
+castle = 60
 flat = 40
 forest = 50
 hills = 50
-water = 20
 mountains = 60
 village = 60
-castle = 60
 
 [node name="Movement" type="Node" parent="."]
 script = ExtResource( 4 )
@@ -75,3 +79,6 @@ strikes = 3
 projectile = ExtResource( 10 )
 
 [node name="Advancements" type="Node" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 2 )
