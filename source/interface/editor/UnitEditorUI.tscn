@@ -1,0 +1,582 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/graphics/images/units/human/royal-warrior.png" type="Texture" id=1]
+[ext_resource path="res://source/interface/editor/FramesTimeline.gd" type="Script" id=2]
+
+[node name="UnitEditorUI" type="CanvasLayer"]
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="CenterContainer" type="CenterContainer" parent="HUD"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -1.0
+margin_bottom = -1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TabContainer" type="TabContainer" parent="HUD/CenterContainer"]
+margin_left = 660.0
+margin_top = 240.0
+margin_right = 1260.0
+margin_bottom = 934.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 600, 600 )
+tab_align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UnitEditor" type="VBoxContainer" parent="HUD/CenterContainer/TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD/CenterContainer/TabContainer/UnitEditor"]
+margin_right = 592.0
+margin_bottom = 400.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/CenterContainer/TabContainer/UnitEditor/HBoxContainer"]
+margin_right = 188.0
+margin_bottom = 400.0
+size_flags_horizontal = 3
+
+[node name="SpritePreview" type="TextureButton" parent="HUD/CenterContainer/TabContainer/UnitEditor/HBoxContainer/VBoxContainer"]
+margin_left = 58.0
+margin_top = 44.0
+margin_right = 130.0
+margin_bottom = 116.0
+rect_min_size = Vector2( 72, 72 )
+size_flags_horizontal = 6
+size_flags_vertical = 6
+texture_normal = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="HUD/CenterContainer/TabContainer/UnitEditor/HBoxContainer/VBoxContainer"]
+margin_top = 164.0
+margin_right = 188.0
+margin_bottom = 400.0
+size_flags_vertical = 10
+columns = 2
+
+[node name="AliasLabel" type="Label" parent="HUD/CenterContainer/TabContainer/UnitEditor/HBoxContainer/VBoxContainer/GridContainer"]
+margin_top = 5.0
+margin_right = 39.0
+margin_bottom = 19.0
+text = "Alias"
+
+[node name="Alias" type="LineEdit" parent="HUD/CenterContainer/TabContainer/UnitEditor/HBoxContainer/VBoxContainer/GridContainer"]
+margin_left = 43.0
+margin_right = 188.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="RaceLabel" type="Label" parent="HUD/CenterContainer/TabContainer/UnitEditor/HBoxContainer/VBoxContainer/GridContainer"]
+margin_top = 31.0
+margin_right = 39.0
+margin_bottom = 45.0
+text = "Race"
+
+[node name="Race" type="OptionButton" parent="HUD/CenterContainer/TabContainer/UnitEditor/HBoxContainer/VBoxContainer/GridContainer"]
+margin_left = 43.0
+margin_top = 28.0
+margin_right = 188.0
+margin_bottom = 48.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="TraitsLabel" type="Label" parent="HUD/CenterContainer/TabContainer/UnitEditor/HBoxContainer/VBoxContainer/GridContainer"]
+margin_top = 55.0
+margin_right = 39.0
+margin_bottom = 69.0
+text = "Traits"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Traits" type="MenuButton" parent="HUD/CenterContainer/TabContainer/UnitEditor/HBoxContainer/VBoxContainer/GridContainer"]
+margin_left = 43.0
+margin_top = 52.0
+margin_right = 188.0
+margin_bottom = 72.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+text = "Traits"
+flat = false
+
+[node name="HPLabel" type="Label" parent="HUD/CenterContainer/TabContainer/UnitEditor/HBoxContainer/VBoxContainer/GridContainer"]
+margin_top = 81.0
+margin_right = 39.0
+margin_bottom = 95.0
+text = "HP"
+
+[node name="HP" type="SpinBox" parent="HUD/CenterContainer/TabContainer/UnitEditor/HBoxContainer/VBoxContainer/GridContainer"]
+margin_left = 43.0
+margin_top = 76.0
+margin_right = 188.0
+margin_bottom = 100.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="XPLabel" type="Label" parent="HUD/CenterContainer/TabContainer/UnitEditor/HBoxContainer/VBoxContainer/GridContainer"]
+margin_top = 109.0
+margin_right = 39.0
+margin_bottom = 123.0
+text = "XP"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="XP" type="SpinBox" parent="HUD/CenterContainer/TabContainer/UnitEditor/HBoxContainer/VBoxContainer/GridContainer"]
+margin_left = 43.0
+margin_top = 104.0
+margin_right = 188.0
+margin_bottom = 128.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="MPLabel" type="Label" parent="HUD/CenterContainer/TabContainer/UnitEditor/HBoxContainer/VBoxContainer/GridContainer"]
+margin_top = 137.0
+margin_right = 39.0
+margin_bottom = 151.0
+text = "MP"
+
+[node name="MP" type="SpinBox" parent="HUD/CenterContainer/TabContainer/UnitEditor/HBoxContainer/VBoxContainer/GridContainer"]
+margin_left = 43.0
+margin_top = 132.0
+margin_right = 188.0
+margin_bottom = 156.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="LevelLabel" type="Label" parent="HUD/CenterContainer/TabContainer/UnitEditor/HBoxContainer/VBoxContainer/GridContainer"]
+margin_top = 165.0
+margin_right = 39.0
+margin_bottom = 179.0
+text = "Level"
+
+[node name="Level" type="SpinBox" parent="HUD/CenterContainer/TabContainer/UnitEditor/HBoxContainer/VBoxContainer/GridContainer"]
+margin_left = 43.0
+margin_top = 160.0
+margin_right = 188.0
+margin_bottom = 184.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="UsageLabel" type="Label" parent="HUD/CenterContainer/TabContainer/UnitEditor/HBoxContainer/VBoxContainer/GridContainer"]
+margin_top = 191.0
+margin_right = 39.0
+margin_bottom = 205.0
+text = "Usage"
+
+[node name="Usage" type="OptionButton" parent="HUD/CenterContainer/TabContainer/UnitEditor/HBoxContainer/VBoxContainer/GridContainer"]
+margin_left = 43.0
+margin_top = 188.0
+margin_right = 188.0
+margin_bottom = 208.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="CostLabel" type="Label" parent="HUD/CenterContainer/TabContainer/UnitEditor/HBoxContainer/VBoxContainer/GridContainer"]
+margin_top = 217.0
+margin_right = 39.0
+margin_bottom = 231.0
+text = "Cost"
+
+[node name="Cost" type="SpinBox" parent="HUD/CenterContainer/TabContainer/UnitEditor/HBoxContainer/VBoxContainer/GridContainer"]
+margin_left = 43.0
+margin_top = 212.0
+margin_right = 188.0
+margin_bottom = 236.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="ProfilePreview" type="TextureButton" parent="HUD/CenterContainer/TabContainer/UnitEditor/HBoxContainer"]
+margin_left = 192.0
+margin_right = 592.0
+margin_bottom = 400.0
+rect_min_size = Vector2( 400, 400 )
+size_flags_horizontal = 10
+texture_normal = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="HUD/CenterContainer/TabContainer/UnitEditor"]
+margin_top = 404.0
+margin_right = 592.0
+margin_bottom = 428.0
+custom_constants/vseparation = 4
+custom_constants/hseparation = 4
+columns = 6
+
+[node name="AlignmentLabel" type="Label" parent="HUD/CenterContainer/TabContainer/UnitEditor/GridContainer"]
+margin_top = 5.0
+margin_right = 66.0
+margin_bottom = 19.0
+text = "Alignment"
+
+[node name="Alignment" type="OptionButton" parent="HUD/CenterContainer/TabContainer/UnitEditor/GridContainer"]
+margin_left = 70.0
+margin_right = 177.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="AdvancementsLabel" type="Label" parent="HUD/CenterContainer/TabContainer/UnitEditor/GridContainer"]
+margin_left = 181.0
+margin_top = 5.0
+margin_right = 276.0
+margin_bottom = 19.0
+text = "Advancements"
+
+[node name="Advancements" type="LineEdit" parent="HUD/CenterContainer/TabContainer/UnitEditor/GridContainer"]
+margin_left = 280.0
+margin_right = 387.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="UndedVariantLabel" type="Label" parent="HUD/CenterContainer/TabContainer/UnitEditor/GridContainer"]
+margin_left = 391.0
+margin_top = 5.0
+margin_right = 481.0
+margin_bottom = 19.0
+text = "Unded Variant"
+
+[node name="Unded Variant" type="LineEdit" parent="HUD/CenterContainer/TabContainer/UnitEditor/GridContainer"]
+margin_left = 485.0
+margin_right = 592.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/CenterContainer/TabContainer/UnitEditor"]
+margin_top = 432.0
+margin_right = 592.0
+margin_bottom = 514.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DescriptionLabel" type="Label" parent="HUD/CenterContainer/TabContainer/UnitEditor/VBoxContainer"]
+margin_right = 592.0
+margin_bottom = 14.0
+text = "Description"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Description" type="TextEdit" parent="HUD/CenterContainer/TabContainer/UnitEditor/VBoxContainer"]
+margin_top = 18.0
+margin_right = 592.0
+margin_bottom = 82.0
+rect_min_size = Vector2( 0, 64 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Attacks" type="Control" parent="HUD/CenterContainer/TabContainer/UnitEditor"]
+margin_top = 518.0
+margin_right = 592.0
+margin_bottom = 550.0
+rect_min_size = Vector2( 0, 32 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AttacksLabel" type="Label" parent="HUD/CenterContainer/TabContainer/UnitEditor/Attacks"]
+margin_right = 600.0
+margin_bottom = 14.0
+text = "Attacks"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Resistances" type="Control" parent="HUD/CenterContainer/TabContainer/UnitEditor"]
+margin_top = 554.0
+margin_right = 592.0
+margin_bottom = 586.0
+rect_min_size = Vector2( 0, 32 )
+
+[node name="ResistancesLabel" type="Label" parent="HUD/CenterContainer/TabContainer/UnitEditor/Resistances"]
+margin_right = 600.0
+margin_bottom = 14.0
+text = "Resistances"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Terrain Modifiers" type="Control" parent="HUD/CenterContainer/TabContainer/UnitEditor"]
+margin_top = 590.0
+margin_right = 592.0
+margin_bottom = 622.0
+rect_min_size = Vector2( 0, 32 )
+
+[node name="TerrainModifiersLabel" type="Label" parent="HUD/CenterContainer/TabContainer/UnitEditor/Terrain Modifiers"]
+margin_right = 600.0
+margin_bottom = 14.0
+text = "Terrain Modifiers"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sounds" type="Control" parent="HUD/CenterContainer/TabContainer/UnitEditor"]
+margin_top = 626.0
+margin_right = 592.0
+margin_bottom = 658.0
+rect_min_size = Vector2( 0, 32 )
+
+[node name="SoundsLabel" type="Label" parent="HUD/CenterContainer/TabContainer/UnitEditor/Sounds"]
+margin_right = 600.0
+margin_bottom = 14.0
+text = "Sounds"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationsEditor" type="HSplitContainer" parent="HUD/CenterContainer/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/CenterContainer/TabContainer/AnimationsEditor"]
+margin_right = 163.0
+margin_bottom = 564.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="AnimationsLabel" type="Label" parent="HUD/CenterContainer/TabContainer/AnimationsEditor/VBoxContainer"]
+margin_right = 163.0
+margin_bottom = 14.0
+text = "Animations"
+align = 1
+
+[node name="ButtonsContainer" type="HBoxContainer" parent="HUD/CenterContainer/TabContainer/AnimationsEditor/VBoxContainer"]
+margin_top = 18.0
+margin_right = 163.0
+margin_bottom = 38.0
+
+[node name="Button" type="Button" parent="HUD/CenterContainer/TabContainer/AnimationsEditor/VBoxContainer/ButtonsContainer"]
+margin_right = 79.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "Add"
+
+[node name="Button2" type="Button" parent="HUD/CenterContainer/TabContainer/AnimationsEditor/VBoxContainer/ButtonsContainer"]
+margin_left = 83.0
+margin_right = 163.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "Remove"
+
+[node name="ItemList" type="ItemList" parent="HUD/CenterContainer/TabContainer/AnimationsEditor/VBoxContainer"]
+margin_top = 42.0
+margin_right = 163.0
+margin_bottom = 440.0
+size_flags_vertical = 3
+
+[node name="HexDirectionSelector" type="Panel" parent="HUD/CenterContainer/TabContainer/AnimationsEditor/VBoxContainer"]
+margin_top = 444.0
+margin_right = 163.0
+margin_bottom = 564.0
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.3
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HUD/CenterContainer/TabContainer/AnimationsEditor"]
+margin_left = 175.0
+margin_right = 592.0
+margin_bottom = 564.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 5.0
+
+[node name="AnimationsLabel" type="Label" parent="HUD/CenterContainer/TabContainer/AnimationsEditor/VBoxContainer2"]
+margin_right = 417.0
+margin_bottom = 14.0
+text = "Animation Frames"
+align = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD/CenterContainer/TabContainer/AnimationsEditor/VBoxContainer2"]
+margin_top = 18.0
+margin_right = 417.0
+margin_bottom = 38.0
+
+[node name="Button" type="Button" parent="HUD/CenterContainer/TabContainer/AnimationsEditor/VBoxContainer2/HBoxContainer"]
+margin_right = 61.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "Add"
+
+[node name="VSeparator" type="VSeparator" parent="HUD/CenterContainer/TabContainer/AnimationsEditor/VBoxContainer2/HBoxContainer"]
+margin_left = 65.0
+margin_right = 69.0
+margin_bottom = 20.0
+
+[node name="Button2" type="Button" parent="HUD/CenterContainer/TabContainer/AnimationsEditor/VBoxContainer2/HBoxContainer"]
+margin_left = 73.0
+margin_right = 135.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "Copy"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button3" type="Button" parent="HUD/CenterContainer/TabContainer/AnimationsEditor/VBoxContainer2/HBoxContainer"]
+margin_left = 139.0
+margin_right = 201.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "Paste"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VSeparator2" type="VSeparator" parent="HUD/CenterContainer/TabContainer/AnimationsEditor/VBoxContainer2/HBoxContainer"]
+margin_left = 205.0
+margin_right = 209.0
+margin_bottom = 20.0
+
+[node name="Button4" type="Button" parent="HUD/CenterContainer/TabContainer/AnimationsEditor/VBoxContainer2/HBoxContainer"]
+margin_left = 213.0
+margin_right = 275.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "Move L"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button5" type="Button" parent="HUD/CenterContainer/TabContainer/AnimationsEditor/VBoxContainer2/HBoxContainer"]
+margin_left = 279.0
+margin_right = 340.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "Move R"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VSeparator3" type="VSeparator" parent="HUD/CenterContainer/TabContainer/AnimationsEditor/VBoxContainer2/HBoxContainer"]
+margin_left = 344.0
+margin_right = 348.0
+margin_bottom = 20.0
+
+[node name="Button6" type="Button" parent="HUD/CenterContainer/TabContainer/AnimationsEditor/VBoxContainer2/HBoxContainer"]
+margin_left = 352.0
+margin_right = 416.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "Remove"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HUD/CenterContainer/TabContainer/AnimationsEditor/VBoxContainer2"]
+margin_top = 42.0
+margin_right = 417.0
+margin_bottom = 126.0
+scroll_vertical_enabled = false
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="HUD/CenterContainer/TabContainer/AnimationsEditor/VBoxContainer2/ScrollContainer"]
+margin_right = 680.0
+margin_bottom = 72.0
+size_flags_horizontal = 3
+script = ExtResource( 2 )
+
+[node name="TextureRect" type="TextureRect" parent="HUD/CenterContainer/TabContainer/AnimationsEditor/VBoxContainer2/ScrollContainer/HBoxContainer2"]
+margin_right = 72.0
+margin_bottom = 72.0
+rect_min_size = Vector2( 72, 72 )
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 200.0
+texture = ExtResource( 1 )
+
+[node name="TextureRect2" type="TextureRect" parent="HUD/CenterContainer/TabContainer/AnimationsEditor/VBoxContainer2/ScrollContainer/HBoxContainer2"]
+margin_left = 76.0
+margin_right = 148.0
+margin_bottom = 72.0
+rect_min_size = Vector2( 72, 72 )
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 100.0
+texture = ExtResource( 1 )
+
+[node name="TextureRect3" type="TextureRect" parent="HUD/CenterContainer/TabContainer/AnimationsEditor/VBoxContainer2/ScrollContainer/HBoxContainer2"]
+margin_left = 152.0
+margin_right = 224.0
+margin_bottom = 72.0
+rect_min_size = Vector2( 72, 72 )
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 150.0
+texture = ExtResource( 1 )
+
+[node name="TextureRect4" type="TextureRect" parent="HUD/CenterContainer/TabContainer/AnimationsEditor/VBoxContainer2/ScrollContainer/HBoxContainer2"]
+margin_left = 228.0
+margin_right = 300.0
+margin_bottom = 72.0
+rect_min_size = Vector2( 72, 72 )
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 500.0
+texture = ExtResource( 1 )
+
+[node name="TextureRect6" type="TextureRect" parent="HUD/CenterContainer/TabContainer/AnimationsEditor/VBoxContainer2/ScrollContainer/HBoxContainer2"]
+margin_left = 304.0
+margin_right = 376.0
+margin_bottom = 72.0
+rect_min_size = Vector2( 72, 72 )
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 200.0
+texture = ExtResource( 1 )
+
+[node name="TextureRect7" type="TextureRect" parent="HUD/CenterContainer/TabContainer/AnimationsEditor/VBoxContainer2/ScrollContainer/HBoxContainer2"]
+margin_left = 380.0
+margin_right = 452.0
+margin_bottom = 72.0
+rect_min_size = Vector2( 72, 72 )
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 200.0
+texture = ExtResource( 1 )
+
+[node name="TextureRect8" type="TextureRect" parent="HUD/CenterContainer/TabContainer/AnimationsEditor/VBoxContainer2/ScrollContainer/HBoxContainer2"]
+margin_left = 456.0
+margin_right = 528.0
+margin_bottom = 72.0
+rect_min_size = Vector2( 72, 72 )
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 200.0
+texture = ExtResource( 1 )
+
+[node name="TextureRect9" type="TextureRect" parent="HUD/CenterContainer/TabContainer/AnimationsEditor/VBoxContainer2/ScrollContainer/HBoxContainer2"]
+margin_left = 532.0
+margin_right = 604.0
+margin_bottom = 72.0
+rect_min_size = Vector2( 72, 72 )
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 200.0
+texture = ExtResource( 1 )
+
+[node name="TextureRect10" type="TextureRect" parent="HUD/CenterContainer/TabContainer/AnimationsEditor/VBoxContainer2/ScrollContainer/HBoxContainer2"]
+margin_left = 608.0
+margin_right = 680.0
+margin_bottom = 72.0
+rect_min_size = Vector2( 72, 72 )
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 200.0
+texture = ExtResource( 1 )

@@ -529,6 +529,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://source/unit/animations/UnitAnimationPlayer.gd"
 }, {
+"base": "CanvasLayer",
+"class": "UnitEditorUI",
+"language": "GDScript",
+"path": "res://source/interface/editor/UnitEditorUI.gd"
+}, {
 "base": "Node2D",
 "class": "UnitPlate",
 "language": "GDScript",
@@ -664,6 +669,7 @@ _global_script_class_icons={
 "UnitAdvancementInfo": "",
 "UnitAnimation": "",
 "UnitAnimationPlayer": "",
+"UnitEditorUI": "",
 "UnitPlate": "",
 "UnitRecallInfo": "",
 "UnitRecruitInfo": "",

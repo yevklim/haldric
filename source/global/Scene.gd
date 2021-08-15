@@ -6,7 +6,7 @@ var scenes := {
 	"Game": "res://source/game/Game.tscn",
 	"Editor": "res://source/menu/EditorScreen.tscn",
 	"Editor/MapEditor": "res://source/editor/MapEditor.tscn",
-	"Editor/UnitEditor": "",
+	"Editor/UnitEditor": "res://source/interface/editor/UnitEditorUI.tscn",
 	"Editor/ScenarioEditor": "",
 	"Editor/CampaignEditor": "",
 	"Editor/Misc": "",
