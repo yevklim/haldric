@@ -1,0 +1,319 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://assets/graphics/images/units/unknown-unit.png" type="Texture" id=2]
+[ext_resource path="res://source/unit/animations/UnitAnimationPlayer.gd" type="Script" id=3]
+[ext_resource path="res://source/interface/editor/HexDirectionPicker.gd" type="Script" id=4]
+[ext_resource path="res://assets/graphics/images/terrain/void/void-sw.png" type="Texture" id=5]
+[ext_resource path="res://assets/graphics/images/terrain/void/void-nw.png" type="Texture" id=6]
+[ext_resource path="res://assets/graphics/images/terrain/void/void-se.png" type="Texture" id=8]
+[ext_resource path="res://assets/graphics/images/terrain/void/void-n.png" type="Texture" id=9]
+[ext_resource path="res://assets/graphics/images/terrain/void/void.png" type="Texture" id=10]
+[ext_resource path="res://assets/graphics/images/terrain/void/void-ne.png" type="Texture" id=11]
+[ext_resource path="res://assets/graphics/images/interface/hover-hex.png" type="Texture" id=14]
+[ext_resource path="res://assets/graphics/images/terrain/void/void-s.png" type="Texture" id=16]
+[ext_resource path="res://assets/graphics/images/interface/picker.png" type="Texture" id=18]
+
+[sub_resource type="TileSet" id=1]
+1/name = "void-n"
+1/texture = ExtResource( 9 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 72, 72 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+2/name = "void-ne"
+2/texture = ExtResource( 11 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 0, 0, 72, 72 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape_one_way = false
+2/shape_one_way_margin = 0.0
+2/shapes = [  ]
+2/z_index = 0
+3/name = "void-nw"
+3/texture = ExtResource( 6 )
+3/tex_offset = Vector2( 0, 0 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 0, 0, 72, 72 )
+3/tile_mode = 0
+3/occluder_offset = Vector2( 0, 0 )
+3/navigation_offset = Vector2( 0, 0 )
+3/shape_offset = Vector2( 0, 0 )
+3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+3/shape_one_way = false
+3/shape_one_way_margin = 0.0
+3/shapes = [  ]
+3/z_index = 0
+4/name = "void-s"
+4/texture = ExtResource( 16 )
+4/tex_offset = Vector2( 0, 0 )
+4/modulate = Color( 1, 1, 1, 1 )
+4/region = Rect2( 0, 0, 72, 72 )
+4/tile_mode = 0
+4/occluder_offset = Vector2( 0, 0 )
+4/navigation_offset = Vector2( 0, 0 )
+4/shape_offset = Vector2( 0, 0 )
+4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+4/shape_one_way = false
+4/shape_one_way_margin = 0.0
+4/shapes = [  ]
+4/z_index = 0
+5/name = "void-se"
+5/texture = ExtResource( 8 )
+5/tex_offset = Vector2( 0, 0 )
+5/modulate = Color( 1, 1, 1, 1 )
+5/region = Rect2( 0, 0, 72, 72 )
+5/tile_mode = 0
+5/occluder_offset = Vector2( 0, 0 )
+5/navigation_offset = Vector2( 0, 0 )
+5/shape_offset = Vector2( 0, 0 )
+5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+5/shape_one_way = false
+5/shape_one_way_margin = 0.0
+5/shapes = [  ]
+5/z_index = 0
+6/name = "void-sw"
+6/texture = ExtResource( 5 )
+6/tex_offset = Vector2( 0, 0 )
+6/modulate = Color( 1, 1, 1, 1 )
+6/region = Rect2( 0, 0, 72, 72 )
+6/tile_mode = 0
+6/occluder_offset = Vector2( 0, 0 )
+6/navigation_offset = Vector2( 0, 0 )
+6/shape_offset = Vector2( 0, 0 )
+6/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+6/shape_one_way = false
+6/shape_one_way_margin = 0.0
+6/shapes = [  ]
+6/z_index = 0
+7/name = "void"
+7/texture = ExtResource( 10 )
+7/tex_offset = Vector2( 0, 0 )
+7/modulate = Color( 1, 1, 1, 1 )
+7/region = Rect2( 0, 0, 72, 72 )
+7/tile_mode = 0
+7/occluder_offset = Vector2( 0, 0 )
+7/navigation_offset = Vector2( 0, 0 )
+7/shape_offset = Vector2( 0, 0 )
+7/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+7/shape_one_way = false
+7/shape_one_way_margin = 0.0
+7/shapes = [  ]
+7/z_index = 0
+
+[node name="HexDirectionSelector" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -1740.0
+margin_bottom = -864.0
+rect_min_size = Vector2( 180, 216 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -36.0
+margin_top = -36.0
+margin_right = 36.0
+margin_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cover" type="TileMap" parent="Control"]
+position = Vector2( -54, -36 )
+tile_set = SubResource( 1 )
+cell_size = Vector2( 54, 72 )
+cell_quadrant_size = 32
+cell_half_offset = 4
+cell_tile_origin = 1
+format = 1
+tile_data = PoolIntArray( -196611, 0, 0, 0, 5, 0, 1, 4, 0, 2, 6, 0, 65536, 2, 0, 65537, 7, 0, 65538, 3, 0, 131073, 1, 0 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -90.0
+margin_top = -108.0
+margin_right = 90.0
+margin_bottom = 108.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NW" type="TextureButton" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -90.0
+margin_top = -72.0
+margin_right = -18.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 36, 36 )
+toggle_mode = true
+texture_pressed = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="N" type="TextureButton" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -36.0
+margin_top = -108.0
+margin_right = 36.0
+margin_bottom = -36.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 36, 36 )
+toggle_mode = true
+texture_pressed = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NE" type="TextureButton" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 18.0
+margin_top = -72.0
+margin_right = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 36, 36 )
+toggle_mode = true
+texture_pressed = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NoDirection" type="TextureButton" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -36.0
+margin_top = -36.0
+margin_right = 36.0
+margin_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 36, 36 )
+toggle_mode = true
+pressed = true
+texture_pressed = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="TextureRect" parent="NoDirection"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -36.0
+margin_top = -36.0
+margin_right = 36.0
+margin_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="NoDirection"]
+script = ExtResource( 3 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="NoDirection"]
+
+[node name="SW" type="TextureButton" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -90.0
+margin_right = -18.0
+margin_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 36, 36 )
+toggle_mode = true
+texture_pressed = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="S" type="TextureButton" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -36.0
+margin_top = 36.0
+margin_right = 36.0
+margin_bottom = 108.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 36, 36 )
+toggle_mode = true
+texture_pressed = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SE" type="TextureButton" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 18.0
+margin_right = 90.0
+margin_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 36, 36 )
+toggle_mode = true
+texture_pressed = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="NW" to="." method="pick_direction" binds= [ "NW" ]]
+[connection signal="pressed" from="N" to="." method="pick_direction" binds= [ "N" ]]
+[connection signal="pressed" from="NE" to="." method="pick_direction" binds= [ "NE" ]]
+[connection signal="pressed" from="NoDirection" to="NoDirection/AnimationPlayer" method="play"]
+[connection signal="pressed" from="NoDirection" to="." method="pick_direction" binds= [ "" ]]
+[connection signal="pressed" from="SW" to="." method="pick_direction" binds= [ "SW" ]]
+[connection signal="pressed" from="S" to="." method="pick_direction" binds= [ "S" ]]
+[connection signal="pressed" from="SE" to="." method="pick_direction" binds= [ "SE" ]]
