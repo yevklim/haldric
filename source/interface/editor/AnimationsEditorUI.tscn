@@ -1,0 +1,430 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://source/interface/editor/HexDirectionPicker.tscn" type="PackedScene" id=1]
+[ext_resource path="res://source/interface/editor/AnimationTimeLine.tscn" type="PackedScene" id=2]
+[ext_resource path="res://source/interface/editor/AnimationsEditorUI.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://assets/graphics/fonts/droid-sans/DroidSans.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+resource_local_to_scene = true
+size = 10
+font_data = SubResource( 1 )
+
+[node name="AnimationsEditor" type="HSplitContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LeftContainer" type="VBoxContainer" parent="."]
+margin_right = 542.0
+margin_bottom = 1080.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="AnimationsLabel" type="Label" parent="LeftContainer"]
+margin_right = 542.0
+margin_bottom = 14.0
+text = "Animations"
+align = 1
+
+[node name="ButtonsContainer" type="HBoxContainer" parent="LeftContainer"]
+margin_top = 18.0
+margin_right = 542.0
+margin_bottom = 38.0
+
+[node name="AddAnimationBtn" type="Button" parent="LeftContainer/ButtonsContainer"]
+margin_right = 269.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "Add"
+
+[node name="RemoveAnimationBtn" type="Button" parent="LeftContainer/ButtonsContainer"]
+margin_left = 273.0
+margin_right = 542.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "Remove"
+
+[node name="AnimationsList" type="ItemList" parent="LeftContainer"]
+margin_top = 42.0
+margin_right = 542.0
+margin_bottom = 860.0
+size_flags_vertical = 3
+
+[node name="HexDirectionPicker" parent="LeftContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 864.0
+margin_right = 542.0
+margin_bottom = 1080.0
+grow_horizontal = 2
+
+[node name="RightContainer" type="VBoxContainer" parent="."]
+margin_left = 554.0
+margin_right = 1920.0
+margin_bottom = 1080.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 5.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RightContainer"]
+margin_right = 1366.0
+margin_bottom = 42.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RightContainer/HBoxContainer"]
+margin_right = 224.0
+margin_bottom = 42.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="RightContainer/HBoxContainer/VBoxContainer"]
+margin_right = 224.0
+margin_bottom = 14.0
+text = "Name"
+
+[node name="AnimationNameEdit" type="LineEdit" parent="RightContainer/HBoxContainer/VBoxContainer"]
+margin_top = 18.0
+margin_right = 224.0
+margin_bottom = 42.0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="RightContainer/HBoxContainer"]
+margin_left = 228.0
+margin_right = 452.0
+margin_bottom = 42.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="RightContainer/HBoxContainer/VBoxContainer2"]
+margin_right = 224.0
+margin_bottom = 14.0
+text = "Length"
+
+[node name="AnimationLengthEdit" type="SpinBox" parent="RightContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 18.0
+margin_right = 224.0
+margin_bottom = 42.0
+min_value = 1.0
+max_value = 10000.0
+value = 1.0
+allow_greater = true
+suffix = "msec"
+
+[node name="EventsMenuBtn" type="MenuButton" parent="RightContainer/HBoxContainer"]
+margin_left = 456.0
+margin_right = 680.0
+margin_bottom = 42.0
+size_flags_horizontal = 3
+text = "Events"
+flat = false
+
+[node name="TerrainTypesMenuBtn" type="MenuButton" parent="RightContainer/HBoxContainer"]
+margin_left = 684.0
+margin_right = 909.0
+margin_bottom = 42.0
+focus_mode = 2
+size_flags_horizontal = 3
+text = "Terrain types"
+flat = false
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="RightContainer/HBoxContainer"]
+margin_left = 913.0
+margin_right = 1137.0
+margin_bottom = 42.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="RightContainer/HBoxContainer/VBoxContainer4"]
+margin_right = 224.0
+margin_bottom = 14.0
+text = "Frequency"
+
+[node name="FrequencySpinBox" type="SpinBox" parent="RightContainer/HBoxContainer/VBoxContainer4"]
+margin_top = 18.0
+margin_right = 224.0
+margin_bottom = 42.0
+size_flags_vertical = 3
+min_value = -1.0
+value = -1.0
+rounded = true
+
+[node name="VBoxContainer5" type="VBoxContainer" parent="RightContainer/HBoxContainer"]
+margin_left = 1141.0
+margin_right = 1366.0
+margin_bottom = 42.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="RightContainer/HBoxContainer/VBoxContainer5"]
+margin_right = 225.0
+margin_bottom = 14.0
+text = "Hits"
+
+[node name="HitsOptionBtn" type="OptionButton" parent="RightContainer/HBoxContainer/VBoxContainer5"]
+margin_top = 18.0
+margin_right = 225.0
+margin_bottom = 42.0
+size_flags_vertical = 3
+text = "Hits"
+
+[node name="FramesLabel" type="Label" parent="RightContainer"]
+margin_top = 46.0
+margin_right = 1366.0
+margin_bottom = 60.0
+text = "Animation Frames"
+align = 1
+
+[node name="ButtonsContainer" type="HBoxContainer" parent="RightContainer"]
+margin_top = 64.0
+margin_right = 1366.0
+margin_bottom = 84.0
+
+[node name="FramesAddBtn" type="MenuButton" parent="RightContainer/ButtonsContainer"]
+margin_right = 266.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "Add"
+flat = false
+items = [ "Keyframe Type", null, 0, false, false, 0, 0, null, "", true, "Key point", null, 2, false, false, 2, 0, null, "", false, "Texture", null, 2, true, false, 1, 0, null, "", false, "Modulate", null, 2, false, false, 2, 0, null, "", false, "Sound", null, 2, false, false, 3, 0, null, "", false, "Insert Method", null, 0, false, false, 4, 0, null, "", true, "With Shift", null, 2, true, false, 5, 0, null, "", false, "Without Shift", null, 2, false, false, 6, 0, null, "", false, "", null, 0, false, false, 7, 0, null, "", true, "Confirm", null, 0, false, false, 8, 0, null, "", false ]
+
+[node name="VSeparator" type="VSeparator" parent="RightContainer/ButtonsContainer"]
+margin_left = 270.0
+margin_right = 274.0
+margin_bottom = 20.0
+
+[node name="FramesCopyBtn" type="Button" parent="RightContainer/ButtonsContainer"]
+margin_left = 278.0
+margin_right = 545.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "Copy"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FramesDuplicateBtn" type="Button" parent="RightContainer/ButtonsContainer"]
+margin_left = 549.0
+margin_right = 816.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "Duplicate"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FramesPasteBtn" type="Button" parent="RightContainer/ButtonsContainer"]
+margin_left = 820.0
+margin_right = 1087.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "Paste"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VSeparator2" type="VSeparator" parent="RightContainer/ButtonsContainer"]
+margin_left = 1091.0
+margin_right = 1095.0
+margin_bottom = 20.0
+
+[node name="FramesRemoveBtn" type="MenuButton" parent="RightContainer/ButtonsContainer"]
+margin_left = 1099.0
+margin_right = 1366.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "Remove"
+flat = false
+items = [ "With Shift", null, 0, false, false, 0, 0, null, "", false, "Without Shift", null, 0, false, false, 1, 0, null, "", false ]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="RightContainer"]
+margin_top = 88.0
+margin_right = 1366.0
+margin_bottom = 860.0
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationTrackEditor" parent="RightContainer/ScrollContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1366.0
+margin_bottom = 772.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+font = SubResource( 2 )
+
+[node name="FramePropertiesEditor" type="PanelContainer" parent="RightContainer"]
+margin_top = 864.0
+margin_right = 1366.0
+margin_bottom = 1080.0
+rect_min_size = Vector2( 0, 216 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RightContainer/FramePropertiesEditor"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 1359.0
+margin_bottom = 209.0
+
+[node name="Label" type="Label" parent="RightContainer/FramePropertiesEditor/VBoxContainer"]
+visible = false
+margin_right = 1352.0
+margin_bottom = 14.0
+text = "Texture"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RightContainer/FramePropertiesEditor/VBoxContainer"]
+margin_right = 1352.0
+margin_bottom = 72.0
+
+[node name="TextureChooserBtn" type="Button" parent="RightContainer/FramePropertiesEditor/VBoxContainer/HBoxContainer"]
+margin_right = 72.0
+margin_bottom = 72.0
+rect_min_size = Vector2( 72, 72 )
+size_flags_horizontal = 0
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="RightContainer/FramePropertiesEditor/VBoxContainer/HBoxContainer"]
+margin_left = 76.0
+margin_right = 148.0
+margin_bottom = 72.0
+rect_min_size = Vector2( 72, 0 )
+
+[node name="SoundChooserBtn" type="Button" parent="RightContainer/FramePropertiesEditor/VBoxContainer/HBoxContainer"]
+margin_left = 152.0
+margin_right = 224.0
+margin_bottom = 72.0
+rect_min_size = Vector2( 72, 0 )
+
+[node name="KeyPointContainer" type="VBoxContainer" parent="RightContainer/FramePropertiesEditor/VBoxContainer/HBoxContainer"]
+margin_left = 228.0
+margin_top = 15.0
+margin_right = 356.0
+margin_bottom = 57.0
+rect_min_size = Vector2( 128, 0 )
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="RightContainer/FramePropertiesEditor/VBoxContainer/HBoxContainer/KeyPointContainer"]
+margin_right = 128.0
+margin_bottom = 14.0
+text = "Key Point Name"
+
+[node name="LineEdit" type="LineEdit" parent="RightContainer/FramePropertiesEditor/VBoxContainer/HBoxContainer/KeyPointContainer"]
+margin_top = 18.0
+margin_right = 128.0
+margin_bottom = 42.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="TimeContainer" type="VBoxContainer" parent="RightContainer/FramePropertiesEditor/VBoxContainer/HBoxContainer"]
+margin_left = 360.0
+margin_top = 15.0
+margin_right = 488.0
+margin_bottom = 57.0
+rect_min_size = Vector2( 128, 0 )
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="RightContainer/FramePropertiesEditor/VBoxContainer/HBoxContainer/TimeContainer"]
+margin_right = 128.0
+margin_bottom = 14.0
+text = "Time"
+
+[node name="SpinBox" type="SpinBox" parent="RightContainer/FramePropertiesEditor/VBoxContainer/HBoxContainer/TimeContainer"]
+margin_top = 18.0
+margin_right = 128.0
+margin_bottom = 42.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+max_value = 10000.0
+value = 1.0
+rounded = true
+allow_greater = true
+suffix = "msec"
+
+[node name="DurationContainer" type="VBoxContainer" parent="RightContainer/FramePropertiesEditor/VBoxContainer/HBoxContainer"]
+margin_left = 492.0
+margin_top = 15.0
+margin_right = 620.0
+margin_bottom = 57.0
+rect_min_size = Vector2( 128, 0 )
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="RightContainer/FramePropertiesEditor/VBoxContainer/HBoxContainer/DurationContainer"]
+margin_right = 128.0
+margin_bottom = 14.0
+text = "Duration"
+
+[node name="SpinBox" type="SpinBox" parent="RightContainer/FramePropertiesEditor/VBoxContainer/HBoxContainer/DurationContainer"]
+margin_top = 18.0
+margin_right = 128.0
+margin_bottom = 42.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+min_value = 1.0
+max_value = 1000.0
+value = 1.0
+rounded = true
+allow_greater = true
+suffix = "msec"
+
+[node name="InterpolationTypeContainer" type="VBoxContainer" parent="RightContainer/FramePropertiesEditor/VBoxContainer/HBoxContainer"]
+margin_left = 624.0
+margin_top = 17.0
+margin_right = 752.0
+margin_bottom = 55.0
+rect_min_size = Vector2( 128, 0 )
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="RightContainer/FramePropertiesEditor/VBoxContainer/HBoxContainer/InterpolationTypeContainer"]
+margin_right = 128.0
+margin_bottom = 14.0
+text = "Interpolation Type"
+
+[node name="OptionButton" type="OptionButton" parent="RightContainer/FramePropertiesEditor/VBoxContainer/HBoxContainer/InterpolationTypeContainer"]
+margin_top = 18.0
+margin_right = 128.0
+margin_bottom = 38.0
+text = "Nearest"
+items = [ "Nearest", null, false, 0, null, "Linear", null, false, 1, null, "Cubic", null, false, 2, null ]
+selected = 0
+
+[node name="FrameTextureDialog" type="FileDialog" parent="."]
+margin_right = 400.0
+margin_bottom = 320.0
+rect_min_size = Vector2( 400, 320 )
+window_title = "Open a File"
+resizable = true
+mode = 0
+filters = PoolStringArray( "*.png ; PNG Images" )
+
+[node name="FrameSoundDialog" type="FileDialog" parent="."]
+margin_right = 400.0
+margin_bottom = 320.0
+rect_min_size = Vector2( 400, 320 )
+window_title = "Open a File"
+resizable = true
+mode = 0
+filters = PoolStringArray( "*.mp3 ;", "*.ogg ;", "*.wav ;" )
+
+[connection signal="pressed" from="LeftContainer/ButtonsContainer/AddAnimationBtn" to="." method="_on_AddAnimationBtn_pressed"]
+[connection signal="pressed" from="LeftContainer/ButtonsContainer/RemoveAnimationBtn" to="." method="_on_RemoveAnimationBtn_pressed"]
+[connection signal="item_activated" from="LeftContainer/AnimationsList" to="." method="_on_AnimationsList_item_activated"]
+[connection signal="item_selected" from="LeftContainer/AnimationsList" to="." method="_on_AnimationsList_item_activated"]
+[connection signal="text_entered" from="RightContainer/HBoxContainer/VBoxContainer/AnimationNameEdit" to="." method="_on_AnimationNameEdit_text_entered"]
+[connection signal="value_changed" from="RightContainer/HBoxContainer/VBoxContainer2/AnimationLengthEdit" to="." method="_on_AnimationLengthEdit_value_changed"]
+[connection signal="item_selected" from="RightContainer/HBoxContainer/VBoxContainer5/HitsOptionBtn" to="." method="_on_HitsOptionBtn_item_selected"]
+[connection signal="pressed" from="RightContainer/ButtonsContainer/FramesCopyBtn" to="RightContainer/ScrollContainer/AnimationTrackEditor" method="copy_selected_keyframes"]
+[connection signal="pressed" from="RightContainer/ButtonsContainer/FramesDuplicateBtn" to="RightContainer/ScrollContainer/AnimationTrackEditor" method="duplicate_selected_keyframes"]
+[connection signal="pressed" from="RightContainer/ButtonsContainer/FramesPasteBtn" to="RightContainer/ScrollContainer/AnimationTrackEditor" method="paste_keyframes"]
+[connection signal="cursor_time_changed" from="RightContainer/ScrollContainer/AnimationTrackEditor" to="." method="_on_AnimationTrackEditor_cursor_time_changed"]
+[connection signal="item_selected" from="RightContainer/ScrollContainer/AnimationTrackEditor" to="." method="_on_AnimationTrackEditor_multi_selected"]
+[connection signal="multi_selected" from="RightContainer/ScrollContainer/AnimationTrackEditor" to="." method="_on_AnimationTrackEditor_multi_selected"]
+[connection signal="pressed" from="RightContainer/FramePropertiesEditor/VBoxContainer/HBoxContainer/TextureChooserBtn" to="." method="_FrameTextureDialog_show"]
+[connection signal="color_changed" from="RightContainer/FramePropertiesEditor/VBoxContainer/HBoxContainer/ColorPickerButton" to="." method="_on_ColorPickerButton_color_changed"]
+[connection signal="pressed" from="RightContainer/FramePropertiesEditor/VBoxContainer/HBoxContainer/SoundChooserBtn" to="." method="_FrameSoundDialog_show"]
+[connection signal="text_entered" from="RightContainer/FramePropertiesEditor/VBoxContainer/HBoxContainer/KeyPointContainer/LineEdit" to="." method="_on_FrameKeyPointLineEdit_text_entered"]
+[connection signal="value_changed" from="RightContainer/FramePropertiesEditor/VBoxContainer/HBoxContainer/TimeContainer/SpinBox" to="." method="_on_FrameTimeSpinBox_value_changed"]
+[connection signal="value_changed" from="RightContainer/FramePropertiesEditor/VBoxContainer/HBoxContainer/DurationContainer/SpinBox" to="." method="_on_FrameDurationSpinBox_value_changed"]
+[connection signal="item_selected" from="RightContainer/FramePropertiesEditor/VBoxContainer/HBoxContainer/InterpolationTypeContainer/OptionButton" to="." method="_on_FrameInterpolationTypeOptionBtn_item_selected"]
+[connection signal="file_selected" from="FrameTextureDialog" to="." method="_on_FrameTextureDialog_file_selected"]
+[connection signal="file_selected" from="FrameSoundDialog" to="." method="_on_FrameSoundDialog_file_selected"]
