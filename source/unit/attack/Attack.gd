@@ -46,3 +46,7 @@ func to_string() -> String:
 		s += " (%s)" % special.alias
 
 	return s
+
+
+func matches_filter(filter: Attack) -> bool:
+	return true

@@ -40,21 +40,21 @@ func start(attacker: CombatContext, defender: CombatContext) -> void:
 		var other = opponent[current]
 		var origin = current.unit.global_position
 
-		current.unit.type.anim.filters.apply_to = [UnitAnimation.Triggers.attack]
-		other.unit.type.anim.filters.apply_to = [UnitAnimation.Triggers.defend]
+		current.unit.type.anim.filters.set_event(UnitAnimation.Events.attack)
+		other.unit.type.anim.filters.set_event(UnitAnimation.Events.defend)
 
 		if current == attacker:
-			current.unit.type.anim.filters.attack = current._attack
-			other.unit.type.anim.filters.second_attack = other._attack
+			current.unit.type.anim.filters.set_primary_attack_filter(current._attack)
+			other.unit.type.anim.filters.set_secondary_attack_filter(other._attack)
 
 		elif current == defender:
-			current.unit.type.anim.filters.second_attack = current._attack
-			other.unit.type.anim.filters.attack = other._attack
+			current.unit.type.anim.filters.set_secondary_attack_filter(current._attack)
+			other.unit.type.anim.filters.set_primary_attack_filter(other._attack)
 
 		var strike = _strike(current, other, attacker, defender)
 
-		var current_anim = current.unit.type.anim.get_unit_animation()
-		var other_anim = other.unit.type.anim.get_unit_animation()
+		var current_anim = current.unit.type.anim.choose_animation()
+		var other_anim = other.unit.type.anim.choose_animation()
 
 		current.unit.type.anim.play_unit_animation(current_anim)
 
@@ -97,14 +97,14 @@ func start(attacker: CombatContext, defender: CombatContext) -> void:
 
 			yield(get_tree().create_timer(max(missile_start, combat_default_length)), "timeout")
 		
-		current.unit.type.anim.filters.apply_to.clear()
-		other.unit.type.anim.filters.apply_to.clear()
+		current.unit.type.anim.filters.event.clear()
+		other.unit.type.anim.filters.event.clear()
 
-		current.unit.type.anim.filters.attack = null
-		other.unit.type.anim.filters.attack = null
+		current.unit.type.anim.filters.primary_attack_filter.clear()
+		other.unit.type.anim.filters.primary_attack_filter.clear()
 
-		current.unit.type.anim.filters.second_attack = null
-		other.unit.type.anim.filters.second_attack = null
+		current.unit.type.anim.filters.secondary_attack_filter.clear()
+		other.unit.type.anim.filters.secondary_attack_filter.clear()
 
 		if other.unit.is_dead():
 			current.unit.grant_experience(max(min_death_xp, death_xp * other.unit.type.level))
@@ -136,7 +136,7 @@ func _strike(current: CombatContext, other: CombatContext, attacker: CombatConte
 
 	if randf() < accuracy:
 		var other_will_survive = other.unit.health.value - other.unit.calculate_damage(current.damage, current.damage_type) > 0
-		current.unit.type.anim.filters.hits = UnitAnimation.Hits.hit if other_will_survive else UnitAnimation.Hits.kill
+		current.unit.type.anim.filters.set_hits(UnitAnimation.Hits.hit if other_will_survive else UnitAnimation.Hits.kill)
 
 		yield()
 
@@ -146,7 +146,7 @@ func _strike(current: CombatContext, other: CombatContext, attacker: CombatConte
 		else:
 			emit_signal("defender_hit", attacker, defender)
 	else:
-		current.unit.type.anim.filters.hits = UnitAnimation.Hits.miss
+		current.unit.type.anim.filters.set_hits(UnitAnimation.Hits.miss)
 
 		yield()
 

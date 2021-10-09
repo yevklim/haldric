@@ -360,4 +360,4 @@ func _set_direction(value: int) -> void:
 	if value < 0 or value > 5:
 		return
 	direction = value
-	type.anim.filters.direction = [value]
+	type.anim.filters.set_direction(value)
