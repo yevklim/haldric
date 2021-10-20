@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://source/interface/editor/HexDirectionPicker.tscn" type="PackedScene" id=1]
 [ext_resource path="res://source/interface/editor/AnimationTimeLine.tscn" type="PackedScene" id=2]
 [ext_resource path="res://source/interface/editor/AnimationsEditorUI.gd" type="Script" id=3]
+[ext_resource path="res://data/Lieutenant-sword-attack.tres" type="Animation" id=4]
 
 [sub_resource type="DynamicFontData" id=1]
 font_path = "res://assets/graphics/fonts/droid-sans/DroidSans.ttf"
@@ -19,6 +20,7 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+animations = [ ExtResource( 4 ) ]
 
 [node name="LeftContainer" type="VBoxContainer" parent="."]
 margin_right = 542.0
